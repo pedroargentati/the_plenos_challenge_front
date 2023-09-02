@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sprint3/list.dart';
+import 'package:sprint3/map.dart';
 import 'package:sprint3/register.dart';
 
 void main() => runApp(MyApp());
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
 }
 
 class CarScreen extends StatelessWidget {
-   const CarScreen({Key? key}) : super(key: key);
+  const CarScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +36,6 @@ class CarScreen extends StatelessWidget {
           const SizedBox(height: 20),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            
             children: [
               Container(
                 decoration: const BoxDecoration(
@@ -50,24 +50,22 @@ class CarScreen extends StatelessWidget {
               Container(
                 width: 70,
                 height: 70,
-
                 decoration: const BoxDecoration(
                   shape: BoxShape.circle,
                 ),
-
                 child: IconButton(
                   icon: const Icon(Icons.power_settings_new),
                   onPressed: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const RegisterCombustivelScreen()),
+                          builder: (context) =>
+                              const RegisterCombustivelScreen()),
                     );
                   },
                   iconSize: 48,
                 ),
               ),
-             
               const SizedBox(width: 20),
               Container(
                 decoration: const BoxDecoration(
@@ -99,10 +97,7 @@ class CarScreen extends StatelessWidget {
                   iconSize: 28,
                 ),
                 const SizedBox(height: 4),
-                const Text(
-                  'Abastecimento',
-                  style: TextStyle(fontSize: 12)
-                ),
+                const Text('Abastecimento', style: TextStyle(fontSize: 12)),
               ],
             ),
           ),
@@ -110,8 +105,8 @@ class CarScreen extends StatelessWidget {
         ],
       ),
       bottomNavigationBar: Container(
-        color: Colors.grey[200], 
-        height: 60, 
+        color: Colors.grey[200],
+        height: 60,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
@@ -125,7 +120,13 @@ class CarScreen extends StatelessWidget {
             ),
             IconButton(
               icon: const Icon(Icons.explore),
-              onPressed: () {},
+              onPressed: () {
+                 Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const MapScreen()),
+                    );
+              },
             ),
             IconButton(
               icon: const Icon(Icons.help_outline),
