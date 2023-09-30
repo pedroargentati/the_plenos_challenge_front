@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class ListCarsScreen extends StatefulWidget {
   const ListCarsScreen({Key? key}) : super(key: key);
@@ -92,19 +93,41 @@ class _ListCarsScreenState extends State<ListCarsScreen> {
                             Text(
                               car.enderecoFormatado,
                               style: const TextStyle(
-                                fontSize: 9,
+                                fontSize: 10,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
                           ],
                         ),
                         const SizedBox(height: 4),
+                        Row(
+                          children: [
+                            const Icon(Icons.date_range, size: 16),
+                            const SizedBox(width: 4),
+                            Text(
+                              DateFormat('dd/MM/yyyy').format(
+                                  DateTime.parse(car.abastecimentoDate)),
+                              style: const TextStyle(fontSize: 14),
+                            ),
+                          ],
+                        ),
+
+                        Row(
+                          children: [
+                            const Icon(Icons.local_gas_station, size: 16),
+                            const SizedBox(width: 4),
+                            Text(
+                              car.nomeTipoCombustivel,
+                              style: const TextStyle(fontSize: 14),
+                            ),
+                          ],
+                        ),
                         // Row(
                         //   children: [
                         //     const Icon(Icons.location_on, size: 16),
                         //     const SizedBox(width: 4),
                         //     Text(
-                        //       car.cep,
+                        //       car.abastecimentoDate,
                         //       style: const TextStyle(fontSize: 14),
                         //     ),
                         //   ],
@@ -124,11 +147,16 @@ class _ListCarsScreenState extends State<ListCarsScreen> {
 
 class CarData {
   final String enderecoFormatado;
+  final String abastecimentoDate;
+  final String nomeTipoCombustivel;
+  //final String qualidade;
 
-  CarData(this.enderecoFormatado);
+  CarData(
+      this.enderecoFormatado, this.abastecimentoDate, this.nomeTipoCombustivel);
 
   factory CarData.fromJson(Map<String, dynamic> json) {
-    return CarData(json['enderecoFormatado']);
+    return CarData(json['enderecoFormatado'], json['abastecimentoDate'],
+        json['nomeTipoCombustivel']);
   }
 }
 
