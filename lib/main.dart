@@ -28,7 +28,7 @@ class CarScreen extends StatelessWidget {
         titleTextStyle: const TextStyle(color: Colors.black, fontSize: 20),
         actions: const [Icon(Icons.account_circle)],
       ),
-      body: Column(
+      body: ListView(
         children: <Widget>[
           Image.network(
             'https://images.pexels.com/photos/14438397/pexels-photo-14438397.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
@@ -121,11 +121,11 @@ class CarScreen extends StatelessWidget {
             IconButton(
               icon: const Icon(Icons.explore),
               onPressed: () {
-                 Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const MapScreen()),
-                    );
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const MapScreen()),
+                );
               },
             ),
             IconButton(
