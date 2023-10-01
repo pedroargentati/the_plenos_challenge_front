@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:sprint3/domain/models/CarData.dart';
 
 class ListCarsScreen extends StatefulWidget {
   const ListCarsScreen({Key? key}) : super(key: key);
@@ -20,8 +21,11 @@ class _ListCarsScreenState extends State<ListCarsScreen> {
   }
 
   Future<void> fetchCarData() async {
-    final response =
-        await http.get(Uri.parse('http://localhost:8080/api/address'));
+    final response = await http.get(
+      Uri.parse('http://localhost:8080/api/address'),
+      headers: {"Accept-Charset": "UTF-8"},
+    );
+
     if (response.statusCode == 200) {
       final List<dynamic> responseData = json.decode(response.body);
       final List<CarData> cars =
@@ -50,7 +54,7 @@ class _ListCarsScreenState extends State<ListCarsScreen> {
           Container(
             padding: const EdgeInsets.all(16.0),
             child: const Text(
-              'Histórico de serviços',
+              'Histórico de Abastecimento',
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
@@ -62,7 +66,7 @@ class _ListCarsScreenState extends State<ListCarsScreen> {
           Container(
             padding: const EdgeInsets.fromLTRB(12.0, 5.0, 12.0, 12.0),
             child: const Text(
-              'Acesse todas as informações sobre os serviços, revisões e recalls realizados no seu Ford',
+              'Acesse todas as informações sobre os históricos de abastecimento do seu veículo',
               style: TextStyle(
                 fontSize: 15,
                 color: Color.fromARGB(255, 0, 20, 130),
@@ -88,12 +92,12 @@ class _ListCarsScreenState extends State<ListCarsScreen> {
                       children: [
                         Row(
                           children: [
-                            const Icon(Icons.local_gas_station, size: 20),
+                            const Icon(Icons.local_gas_station, size: 16),
                             const SizedBox(width: 8),
                             Text(
                               car.enderecoFormatado,
                               style: const TextStyle(
-                                fontSize: 10,
+                                fontSize: 14,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
@@ -103,35 +107,30 @@ class _ListCarsScreenState extends State<ListCarsScreen> {
                         Row(
                           children: [
                             const Icon(Icons.date_range, size: 16),
-                            const SizedBox(width: 4),
+                            const SizedBox(width: 8),
                             Text(
                               DateFormat('dd/MM/yyyy').format(
                                   DateTime.parse(car.abastecimentoDate)),
-                              style: const TextStyle(fontSize: 14),
+                              style: const TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ],
                         ),
-
                         Row(
                           children: [
                             const Icon(Icons.local_gas_station, size: 16),
-                            const SizedBox(width: 4),
+                            const SizedBox(width: 8),
                             Text(
                               car.nomeTipoCombustivel,
-                              style: const TextStyle(fontSize: 14),
+                              style: const TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ],
                         ),
-                        // Row(
-                        //   children: [
-                        //     const Icon(Icons.location_on, size: 16),
-                        //     const SizedBox(width: 4),
-                        //     Text(
-                        //       car.abastecimentoDate,
-                        //       style: const TextStyle(fontSize: 14),
-                        //     ),
-                        //   ],
-                        // ),
                       ],
                     ),
                   ),
@@ -145,20 +144,7 @@ class _ListCarsScreenState extends State<ListCarsScreen> {
   }
 }
 
-class CarData {
-  final String enderecoFormatado;
-  final String abastecimentoDate;
-  final String nomeTipoCombustivel;
-  //final String qualidade;
 
-  CarData(
-      this.enderecoFormatado, this.abastecimentoDate, this.nomeTipoCombustivel);
-
-  factory CarData.fromJson(Map<String, dynamic> json) {
-    return CarData(json['enderecoFormatado'], json['abastecimentoDate'],
-        json['nomeTipoCombustivel']);
-  }
-}
 
 void main() {
   runApp(const MaterialApp(

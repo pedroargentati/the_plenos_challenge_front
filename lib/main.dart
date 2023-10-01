@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:sprint3/list.dart';
-import 'package:sprint3/map.dart';
-import 'package:sprint3/register.dart';
 
 void main() => runApp(MyApp());
 
@@ -10,7 +8,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(primarySwatch: Colors.blue),
-      home: CarScreen(),
+      home: const CarScreen(),
     );
   }
 }
@@ -22,7 +20,7 @@ class CarScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.grey[200],
+        backgroundColor: const Color(0xFFbcdbf1),
         title: const Text('Meu Carro'),
         centerTitle: true,
         titleTextStyle: const TextStyle(color: Colors.black, fontSize: 20),
@@ -56,12 +54,6 @@ class CarScreen extends StatelessWidget {
                 child: IconButton(
                   icon: const Icon(Icons.power_settings_new),
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) =>
-                              const RegisterCombustivelScreen()),
-                    );
                   },
                   iconSize: 48,
                 ),
@@ -97,7 +89,6 @@ class CarScreen extends StatelessWidget {
                   iconSize: 28,
                 ),
                 const SizedBox(height: 4),
-                const Text('Abastecimento', style: TextStyle(fontSize: 12)),
               ],
             ),
           ),
@@ -105,7 +96,7 @@ class CarScreen extends StatelessWidget {
         ],
       ),
       bottomNavigationBar: Container(
-        color: Colors.grey[200],
+        color: const Color(0xFFbcdbf1),
         height: 60,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -117,16 +108,6 @@ class CarScreen extends StatelessWidget {
             IconButton(
               icon: const Icon(Icons.directions_car),
               onPressed: () {},
-            ),
-            IconButton(
-              icon: const Icon(Icons.explore),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const MapScreen()),
-                );
-              },
             ),
             IconButton(
               icon: const Icon(Icons.help_outline),
