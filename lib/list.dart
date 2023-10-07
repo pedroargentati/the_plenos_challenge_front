@@ -22,12 +22,13 @@ class _ListCarsScreenState extends State<ListCarsScreen> {
 
   Future<void> fetchCarData() async {
     final response = await http.get(
-      Uri.parse('http://localhost:8080/api/address'),
-      headers: {"Accept-Charset": "UTF-8"},
+      Uri.parse('http://localhost:8080/v2/fordfuel/abastecimentos-detalhados'),
+      // headers: {"Accept-Charset": "UTF-8"},
     );
 
     if (response.statusCode == 200) {
       final List<dynamic> responseData = json.decode(response.body);
+      print(responseData);
       final List<CarData> cars =
           responseData.map((data) => CarData.fromJson(data)).toList();
 
@@ -96,7 +97,7 @@ class _ListCarsScreenState extends State<ListCarsScreen> {
                       children: [
                         Row(
                           children: [
-                            const Icon(Icons.local_gas_station, size: 16),
+                            const Icon(Icons.house, size: 16),
                             const SizedBox(width: 8),
                             Text(
                               car.enderecoFormatado,
