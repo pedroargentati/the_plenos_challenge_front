@@ -31,8 +31,6 @@ class _MapScreenState extends State<MapScreen> {
           onPositionChanged: (MapPosition position, bool hasGesture) {
             setState(() {
               final zoom = position.zoom;
-              // Defina uma lógica para ajustar o raio com base no nível de zoom
-              // Por exemplo, você pode fazer o raio diminuir à medida que o zoom aumenta
               circleRadius = 2000 / zoom!;
             });
           },
