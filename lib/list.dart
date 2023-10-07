@@ -46,7 +46,10 @@ class _ListCarsScreenState extends State<ListCarsScreen> {
         backgroundColor: const Color(0xFFbcdbf1),
         centerTitle: true,
         title: const Text('Histórico'),
-        titleTextStyle: const TextStyle(color: Colors.black),
+        titleTextStyle: const TextStyle(
+          color: Colors.black,
+          fontFamily: 'Comfortaa',
+        ),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -70,6 +73,7 @@ class _ListCarsScreenState extends State<ListCarsScreen> {
               style: TextStyle(
                 fontSize: 15,
                 color: Color.fromARGB(255, 0, 20, 130),
+                fontFamily: 'Comfortaa',
               ),
               textAlign: TextAlign.start,
             ),
@@ -143,8 +147,6 @@ class _ListCarsScreenState extends State<ListCarsScreen> {
     );
   }
 }
-
-
 
 void main() {
   runApp(const MaterialApp(

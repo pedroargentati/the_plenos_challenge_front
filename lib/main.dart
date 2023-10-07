@@ -29,7 +29,10 @@ class CarScreen extends StatelessWidget {
               Text(
                 'My Ford',
                 style: TextStyle(
-                    color: Colors.black, fontSize: 15, fontFamily: 'Comfortaa'),
+                  color: Colors.black,
+                  fontSize: 15,
+                  fontFamily: 'Comfortaa',
+                ),
               ),
               Icon(
                 Icons.keyboard_arrow_down,
@@ -99,10 +102,16 @@ class CarScreen extends StatelessWidget {
                         ),
                         SizedBox(height: 8),
                         Text(
-                          'Start',
+                          'start',
                           style: TextStyle(
                             fontSize: 12,
-                            color: Color.fromARGB(255, 0, 2, 118),
+                            color: Color.fromARGB(
+                              255,
+                              0,
+                              2,
+                              118,
+                            ),
+                            fontFamily: 'Comfortaa',
                           ),
                         ),
                       ],
@@ -199,6 +208,7 @@ class CarScreen extends StatelessWidget {
                     'Início',
                     style: TextStyle(
                       color: Color.fromARGB(255, 133, 133, 148),
+                      fontFamily: 'Comfortaa',
                     ),
                   ),
                 ],
@@ -217,6 +227,7 @@ class CarScreen extends StatelessWidget {
                     'Veículo',
                     style: TextStyle(
                       color: Color.fromARGB(255, 133, 133, 148),
+                      fontFamily: 'Comfortaa',
                     ),
                   ),
                 ],
@@ -233,8 +244,9 @@ class CarScreen extends StatelessWidget {
                   ),
                   const Text(
                     'Serviços',
-                    style: TextStyle( 
+                    style: TextStyle(
                       color: Color.fromARGB(255, 133, 133, 148),
+                      fontFamily: 'Comfortaa',
                     ),
                   ),
                 ],
@@ -253,6 +265,7 @@ class CarScreen extends StatelessWidget {
                     'Mapa',
                     style: TextStyle(
                       color: Color.fromARGB(255, 133, 133, 148),
+                      fontFamily: 'Comfortaa',
                     ),
                   ),
                 ],
