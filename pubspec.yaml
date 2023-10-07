@@ -33,6 +33,14 @@ dependencies:
   flutter_iconpicker: ^3.2.4 
   http: ^0.13.3 
   intl: ^0.17.0
+  flutter_launcher_icons: ^0.10.0
+
+flutter_icons:
+  image_path: "assets/images/iconApp.jpeg"
+  ios: true
+  remove_alpha_ios: true
+  android: "launcher_icon"
+  adaptive_icon_foreground: "assets/images/iconApp.jpeg"
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -49,6 +57,8 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
+
+  
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
