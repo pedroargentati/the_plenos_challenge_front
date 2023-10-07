@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_map/flutter_map.dart';
 import 'package:sprint3/list.dart';
+import 'package:sprint3/map.dart';
 
 void main() => runApp(MyApp());
 
@@ -259,7 +261,13 @@ class CarScreen extends StatelessWidget {
                       Icons.pin_drop_outlined,
                       color: Color.fromARGB(255, 133, 133, 148),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => MapScreen()),
+                      );
+                    },
                   ),
                   const Text(
                     'Mapa',
