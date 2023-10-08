@@ -29,7 +29,6 @@ class _ListCarsScreenState extends State<ListCarsScreen> {
 
     if (response.statusCode == 200) {
       final List<dynamic> responseData = json.decode(response.body);
-      print(responseData);
       final List<CarData> cars =
           responseData.map((data) => CarData.fromJson(data)).toList();
 
