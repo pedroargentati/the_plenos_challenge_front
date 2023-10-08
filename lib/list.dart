@@ -29,6 +29,7 @@ class _ListCarsScreenState extends State<ListCarsScreen> {
 
     if (response.statusCode == 200) {
       final List<dynamic> responseData = json.decode(response.body);
+      print(responseData);
       final List<CarData> cars =
           responseData.map((data) => CarData.fromJson(data)).toList();
 
@@ -97,7 +98,7 @@ class _ListCarsScreenState extends State<ListCarsScreen> {
                       children: [
                         Row(
                           children: [
-                            const Icon(Icons.local_gas_station, size: 16),
+                            const Icon(Icons.house, size: 16),
                             const SizedBox(width: 8),
                             const Text(
                               "Cidade: ",
