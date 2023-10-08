@@ -22,7 +22,7 @@ class _ListCarsScreenState extends State<ListCarsScreen> {
 
   Future<void> fetchCarData() async {
     final response = await http.get(
-      Uri.parse('http://localhost:8080/v2/fordfuel/abastecimentos-detalhados'),
+      Uri.parse('https://fordfuel.rj.r.appspot.com/v2/fordfuel/abastecimentos-detalhados'),
       // headers: {"Accept-Charset": "UTF-8"},
     );
 
