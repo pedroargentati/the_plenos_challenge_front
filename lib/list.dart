@@ -3,12 +3,18 @@ import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:sprint3/domain/models/CarData.dart';
+import 'package:sprint3/map.dart';
 
 class ListCarsScreen extends StatefulWidget {
   const ListCarsScreen({Key? key}) : super(key: key);
 
   @override
   State<ListCarsScreen> createState() => _ListCarsScreenState();
+}
+
+String removerCaracteresEspeciais(String input) {
+  final regex = RegExp(r'[^\w\s]+');
+  return input.replaceAll(regex, '');
 }
 
 class _ListCarsScreenState extends State<ListCarsScreen> {
@@ -24,11 +30,11 @@ class _ListCarsScreenState extends State<ListCarsScreen> {
     final response = await http.get(
       Uri.parse(
           'https://fordfuel.rj.r.appspot.com/v2/fordfuel/abastecimentos-detalhados'),
-      headers: {"Accept-Charset": "UTF-8"},
     );
 
     if (response.statusCode == 200) {
-      final List<dynamic> responseData = json.decode(response.body);
+      final List<dynamic> responseData =
+          json.decode(const Utf8Decoder().convert(response.bodyBytes));
       final List<CarData> cars =
           responseData.map((data) => CarData.fromJson(data)).toList();
 
@@ -113,11 +119,53 @@ class _ListCarsScreenState extends State<ListCarsScreen> {
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
+                            const SizedBox(width: 10),
+                            Row(
+                              children: [
+                                ElevatedButton(
+                                  onPressed: () {
+                                    final double latitude =
+                                        double.parse(car.latitude);
+                                    final double longitude =
+                                        double.parse(car.longitude);
+                                    Navigator.of(context).push(
+                                      MaterialPageRoute(
+                                        builder: (context) => MapScreen(
+                                          latitude: latitude,
+                                          longitude: longitude,
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                  child: const Text('Visualizar no mapa'),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                         Row(
+                          children: [
+                            const Icon(Icons.pin_drop_outlined, size: 16),
+                            const SizedBox(width: 8),
+                            const Text(
+                              "Rua: ",
+                              style: TextStyle(
+                                fontSize: 14,
+                                fontFamily: 'Comfortaa',
+                              ),
+                            ),
+                            Text(
+                              car.rua,
+                              style: const TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
                           ],
                         ),
                         Row(
                           children: [
-                            const Icon(Icons.local_gas_station, size: 16),
+                            const Icon(Icons.pin_drop_outlined, size: 16),
                             const SizedBox(width: 8),
                             const Text(
                               "Bairro: ",
@@ -137,7 +185,7 @@ class _ListCarsScreenState extends State<ListCarsScreen> {
                         ),
                         Row(
                           children: [
-                            const Icon(Icons.local_gas_station, size: 16),
+                            const Icon(Icons.map_outlined, size: 16),
                             const SizedBox(width: 8),
                             const Text(
                               "Cep: ",
@@ -199,7 +247,7 @@ class _ListCarsScreenState extends State<ListCarsScreen> {
                         ),
                         Row(
                           children: [
-                            const Icon(Icons.local_gas_station, size: 16),
+                            const Icon(Icons.engineering_outlined, size: 16),
                             const SizedBox(width: 8),
                             const Text(
                               "Nome do Posto: ",

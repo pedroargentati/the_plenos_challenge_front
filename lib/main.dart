@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
+import 'package:sprint3/grafic.dart';
 import 'package:sprint3/list.dart';
 import 'package:sprint3/map.dart';
 
@@ -265,7 +266,10 @@ class CarScreen extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => MapScreen()),
+                            builder: (context) => MapScreen(
+                                  latitude: -18.5122, // Latitude de Minas Gerais (exemplo)
+                                  longitude: -44.5550,
+                                )),
                       );
                     },
                   ),

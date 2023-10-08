@@ -5,23 +5,29 @@ import 'package:url_launcher/url_launcher.dart';
 
 class MapScreen extends StatefulWidget {
   @override
-  _MapScreenState createState() => _MapScreenState();
+  _MapScreenState createState() => _MapScreenState(latitude, longitude);
+
+  final double? latitude;
+  final double? longitude;
+
+  MapScreen({this.latitude, this.longitude});
 }
 
 class _MapScreenState extends State<MapScreen> {
-  List<LatLng> coordinates = [
-    LatLng(-23.513498, -46.653354),
-    LatLng(-23.513494, -46.653365),
-    LatLng(-23.509061, -46.652768),
-  ];
+  List<LatLng> coordinates = [];
+  double circleRadius = 1000;
 
-  double circleRadius = 1000; 
+  _MapScreenState(double? latitude, double? longitude) {
+    if (latitude != null && longitude != null) {
+      coordinates.add(LatLng(latitude, longitude));
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 127, 127, 127),
+        backgroundColor: const Color.fromARGB(255, 127, 127, 127),
         title: const Text(
           'Mapa',
           style: TextStyle(
@@ -46,7 +52,7 @@ class _MapScreenState extends State<MapScreen> {
           Expanded(
             child: FlutterMap(
               options: MapOptions(
-                center: LatLng(-23.574165, -46.623128),
+                center: LatLng(-23.609720, -46.698029),
                 zoom: 12,
                 onPositionChanged: (MapPosition position, bool hasGesture) {
                   setState(() {
