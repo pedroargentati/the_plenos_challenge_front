@@ -22,7 +22,8 @@ class _ListCarsScreenState extends State<ListCarsScreen> {
 
   Future<void> fetchCarData() async {
     final response = await http.get(
-      Uri.parse('http://localhost:8080/api/address'),
+      Uri.parse(
+          'https://fordfuel.rj.r.appspot.com/v2/fordfuel/abastecimentos-detalhados'),
       headers: {"Accept-Charset": "UTF-8"},
     );
 
@@ -98,8 +99,55 @@ class _ListCarsScreenState extends State<ListCarsScreen> {
                           children: [
                             const Icon(Icons.local_gas_station, size: 16),
                             const SizedBox(width: 8),
+                            const Text(
+                              "Cidade: ",
+                              style: TextStyle(
+                                fontSize: 14,
+                                fontFamily: 'Comfortaa',
+                              ),
+                            ),
                             Text(
                               car.enderecoFormatado,
+                              style: const TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            const Icon(Icons.local_gas_station, size: 16),
+                            const SizedBox(width: 8),
+                            const Text(
+                              "Bairro: ",
+                              style: TextStyle(
+                                fontSize: 14,
+                                fontFamily: 'Comfortaa',
+                              ),
+                            ),
+                            Text(
+                              car.bairro,
+                              style: const TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            const Icon(Icons.local_gas_station, size: 16),
+                            const SizedBox(width: 8),
+                            const Text(
+                              "Cep: ",
+                              style: TextStyle(
+                                fontSize: 14,
+                                fontFamily: 'Comfortaa',
+                              ),
+                            ),
+                            Text(
+                              car.cep,
                               style: const TextStyle(
                                 fontSize: 14,
                                 fontWeight: FontWeight.bold,
@@ -112,8 +160,15 @@ class _ListCarsScreenState extends State<ListCarsScreen> {
                           children: [
                             const Icon(Icons.date_range, size: 16),
                             const SizedBox(width: 8),
+                            const Text(
+                              'Data e Hora: ',
+                              style: TextStyle(
+                                fontSize: 14,
+                                fontFamily: 'Comfortaa',
+                              ),
+                            ),
                             Text(
-                              DateFormat('dd/MM/yyyy').format(
+                              DateFormat('dd/MM/yyyy HH:mm').format(
                                   DateTime.parse(car.abastecimentoDate)),
                               style: const TextStyle(
                                 fontSize: 14,
@@ -126,8 +181,35 @@ class _ListCarsScreenState extends State<ListCarsScreen> {
                           children: [
                             const Icon(Icons.local_gas_station, size: 16),
                             const SizedBox(width: 8),
+                            const Text(
+                              "Combustível: ",
+                              style: TextStyle(
+                                fontSize: 14,
+                                fontFamily: 'Comfortaa',
+                              ),
+                            ),
                             Text(
                               car.nomeTipoCombustivel,
+                              style: const TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            const Icon(Icons.local_gas_station, size: 16),
+                            const SizedBox(width: 8),
+                            const Text(
+                              "Nome do Posto: ",
+                              style: TextStyle(
+                                fontSize: 14,
+                                fontFamily: 'Comfortaa',
+                              ),
+                            ),
+                            Text(
+                              car.nomePosto,
                               style: const TextStyle(
                                 fontSize: 14,
                                 fontWeight: FontWeight.bold,
