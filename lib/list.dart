@@ -225,26 +225,26 @@ class _ListCarsScreenState extends State<ListCarsScreen> {
                             ),
                           ],
                         ),
-                        Row(
-                          children: [
-                            const Icon(Icons.local_gas_station, size: 16),
-                            const SizedBox(width: 8),
-                            const Text(
-                              "Combustível: ",
-                              style: TextStyle(
-                                fontSize: 14,
-                                fontFamily: 'Comfortaa',
-                              ),
-                            ),
-                            Text(
-                              car.nomeTipoCombustivel,
-                              style: const TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ],
-                        ),
+                        // Row(
+                        //   children: [
+                        //     const Icon(Icons.local_gas_station, size: 16),
+                        //     const SizedBox(width: 8),
+                        //     const Text(
+                        //       "Combustível: ",
+                        //       style: TextStyle(
+                        //         fontSize: 14,
+                        //         fontFamily: 'Comfortaa',
+                        //       ),
+                        //     ),
+                        //     Text(
+                        //       car.nomeTipoCombustivel,
+                        //       style: const TextStyle(
+                        //         fontSize: 14,
+                        //         fontWeight: FontWeight.bold,
+                        //       ),
+                        //     ),
+                        //   ],
+                        // ),
                         Row(
                           children: [
                             const Icon(Icons.engineering_outlined, size: 16),
